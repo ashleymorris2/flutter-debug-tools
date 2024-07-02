@@ -56,15 +56,15 @@ class _LogViewerScreenState extends State<LogViewerScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   controller: _scrollController,
-                  child: RichText(
-                    key: _textKey,
-                    text: TextSpan(
+                  child: SelectableText.rich(
+                    TextSpan(
                       children: [...textSpans],
                       style: const TextStyle(
                         fontFamily: 'monospace',
                         fontSize: 7,
                       ),
                     ),
+                    key: _textKey,
                   ),
                 ),
               ),
@@ -168,6 +168,12 @@ class _LogViewerScreenState extends State<LogViewerScreen> {
     int endIndex = startIndex + chunkSize;
 
     endIndex = endIndex > fileSize ? fileSize : endIndex;
+
+    if (startIndex >= fileSize) {
+      raf.closeSync();
+      yield '';
+      return;
+    }
 
     raf.setPositionSync(startIndex);
     List<int> chunk = raf.readSync(endIndex - startIndex);

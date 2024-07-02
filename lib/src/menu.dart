@@ -3,9 +3,9 @@ import 'package:debug_tools/src/notification_viewer.dart';
 import 'package:flutter/material.dart';
 
 class DebugMenuScreen extends StatelessWidget {
-  final String? fileName;
+  final String? logFileName;
 
-  const DebugMenuScreen({super.key, this.fileName});
+  const DebugMenuScreen({super.key, this.logFileName});
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +33,19 @@ class DebugMenuScreen extends StatelessWidget {
                   ));
             },
           ),
-          fileName == null
+          logFileName == null
               ? const SizedBox.shrink()
               : ListTile(
                   title: const Text(
                     'Log File Viewer ',
                   ),
                   onTap: () async {
-                    if (fileName != null) {
+                    if (logFileName != null) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => LogViewerScreen(
-                              fileName: fileName!,
+                              fileName: logFileName!,
                             ),
                           ));
                     }
