@@ -1,39 +1,20 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+Debug tools that I use in all Flutter development projects that help make development and on device debuging easier.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+Two ways to include
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+1. Using Git submodule to checkout the repo into another repository and then adding a link in the projects `pubspec.yml`:
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+   ```yml
+   debug_tools:
+    path: ../debug_tools
+   ```
+This allows local development on the branch and changes are tracked to the correct repo.
 
-## Features
+2. Pulling through from the repository directly:
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yml
+debug_tools:
+  git:
+      url: <link to this repo>
+      ref: main # branch name
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
